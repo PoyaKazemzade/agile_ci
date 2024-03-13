@@ -54,6 +54,10 @@ workflows:
             - deploy:
                   requires:
                       - build-node
+                  filters:
+                      branches:
+                          only:
+                              - main
             # - deploy:
             #     requires:
             #       - build-node
