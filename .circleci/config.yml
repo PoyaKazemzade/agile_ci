@@ -38,22 +38,22 @@ jobs:
         steps:
             - checkout
             - node/install-packages:
-              pkg-manager: npm
+                  pkg-manager: npm
             - run:
-              command: npm run build
+                  command: npm run build
             - run:
-              name: Deploy Netlify
-              command: npx netlify deploy --prod --dir=build
-    workflows:
-        build-and-test:
+                  name: Deploy Netlify
+                  command: npx netlify deploy --prod --dir=build
+workflows:
+    build-and-test:
         jobs:
             - test-node
             - build-node:
-        requires:
-            - test-node
+                  requires:
+                      - test-node
             - deploy:
-              requires:
-            - build-node
-        # - deploy:
-        #     requires:
-        #       - build-node
+                  requires:
+                      - build-node
+            # - deploy:
+            #     requires:
+            #       - build-node
